@@ -29,7 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+    )
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'operation',
     'xadmin',
     'crispy_forms',
+    
 ]
 
 AUTH_USER_MODEL = 'users.UserProfile'
@@ -64,7 +67,7 @@ ROOT_URLCONF = 'WxOnline.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -90,6 +93,7 @@ DATABASES = {
         'USER':'root',
         'PASSWORD':'123456',
         'HOST':'127.0.0.1',
+        'OPTIONS':{'init_command':'SET storage_engine=MyISAM',},
 
     }
 }
@@ -132,3 +136,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+        os.path.join(BASE_DIR,'static'),
+    )

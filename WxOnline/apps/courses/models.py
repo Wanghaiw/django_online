@@ -18,9 +18,12 @@ class Course(models.Model):
 	click_nums = models.IntegerField(default=0,verbose_name='点击数')
 	add_time = models.DateField(default=datetime.now,verbose_name='添加时间')
 
-	class Mete:
+	class Meta:
 		verbose_name='课程'
 		verbose_name_plural = verbose_name
+
+	def __unicode__(self):
+		return self.name
 
 
 #章节模型
@@ -33,6 +36,8 @@ class Lesson(models.Model):
 		verbose_name='章节'
 		verbose_name_plural = verbose_name
 
+	def __unicode__(self):
+		return self.name
 #视频
 class Video(models.Model):
 	lesson = models.ForeignKey(Lesson,verbose_name='章节')

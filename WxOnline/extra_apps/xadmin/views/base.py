@@ -311,7 +311,7 @@ class CommAdminView(BaseAdminView):
 
     base_template = 'xadmin/base_site.html'
     menu_template = 'xadmin/includes/sitemenu_default.html'
-
+    
     site_title = getattr(settings,"XADMIN_TITLE",_(u"Django Xadmin"))
     site_footer = getattr(settings,"XADMIN_FOOTER_TITLE",_(u"my-company.inc"))
 
